@@ -1,9 +1,17 @@
 %h3 Welcome to DBC Teacher!
 
-= link_to "Users: #{User.count} registered", users_path
-%p
-  Students
-  = User.students.pluck(:name).join(', ')
-%p
-  Teachers
-  = User.teachers.map{|u|u.name}.join(', ')
+.large-2.medium-4.small-6.columns.heading
+  %strong= pluralize(Cohort.count, 'Cohort')
+  .line-break
+  = render Cohort.all
+- if students = User.students
+  .large-2.medium-4.small-6.columns.heading
+    %strong= pluralize(students.count, 'Student')
+    .line-break
+    = render students.order(:name)
+- if teachers = User.all_teachers
+  .large-2.medium-4.small-6.columns.heading
+    %strong= pluralize(teachers.count, 'Teacher')
+    .line-break
+    = render teachers.order(:name)
+.large-6.show-for-large-up.columns.heading

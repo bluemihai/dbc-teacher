@@ -20,7 +20,6 @@ gem 'thin'
 gem 'eat'
 
 group :development, :test do
-  gem 'byebug'              # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'pry-rails'
@@ -30,7 +29,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'web-console', '~> 2.0' # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'spring'                # Spring speeds up development by keeping your application running in the background
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_20]

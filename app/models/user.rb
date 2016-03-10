@@ -4,12 +4,14 @@ class User < ActiveRecord::Base
   after_initialize :set_default_role, :if => :new_record?
   has_many :teacher_interactions, foreign_key: :student_id
   has_many :student_interactions, foreign_key: :teacher_id
+  belongs_to :cohort, foreign_key: :member_id
 
   scope :teachers, -> {where(role: 1)}
   scope :students, -> {where(role: 0)}
+  scope :admin, -> {where(role: 3)}
 
-  def self.teachers
-    User.all.select{ |user| ['teacher', 'admin'].include? user.role }
+  def self.all_teachers
+    User.teachers.merge(User.admin)
   end
 
   def set_default_role
