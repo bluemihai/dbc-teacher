@@ -31,6 +31,16 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.create_from_github(username)
+    user_api = JSON.parse eat('https://api.github.com/users/' + username)
+    create! do |user|
+      user.provider = 'github'
+      user.uid = user_api['id']
+      user.github_hash = user_api
+      user.name = user_api['name']
+    end
+  end
+
   def avatar_url
     github_hash['avatar_url'] if github_hash
   end

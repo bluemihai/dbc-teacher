@@ -17,6 +17,7 @@ gem 'omniauth-github'
 gem 'pg'
 gem 'simple_form'
 gem 'thin'
+gem 'eat'
 
 group :development, :test do
   gem 'byebug'              # Call 'byebug' anywhere in the code to stop execution and get a debugger console

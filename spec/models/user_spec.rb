@@ -10,6 +10,11 @@ describe User do
     expect(@user.name).to match 'Test User'
   end
 
+  it "User#import_from_github works" do
+    @garrett = User.create_from_github('booneteam')
+    expect(@garrett.name).to match 'Garrett Boone'
+  end
+
   context 'scopes' do
     before do
       @teacher1 = FactoryGirl.create(:user, role: 'teacher')

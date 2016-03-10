@@ -69,6 +69,8 @@ GEM
     database_cleaner (1.5.1)
     debug_inspector (0.0.2)
     diff-lcs (1.2.5)
+    eat (0.1.8)
+      httpclient
     erubis (2.7.0)
     eventmachine (1.0.9.1)
     execjs (2.6.0)
@@ -126,6 +128,7 @@ GEM
       haml (~> 4.0.0)
       nokogiri (~> 1.6.0)
       ruby_parser (~> 3.5)
+    httpclient (2.7.1)
     hub (1.12.4)
     i18n (0.7.0)
     interception (0.5)
@@ -319,6 +322,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.1.0)
   database_cleaner
+  eat
   factory_girl_rails
   faker
   figaro
