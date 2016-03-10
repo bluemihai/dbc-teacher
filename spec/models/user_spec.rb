@@ -24,8 +24,7 @@ describe User do
 
     it '#self.teachers should return all teachers' do
       expect(User.teachers.count).to eq(3)
-    end
-    
+    end    
   end
 
 end
