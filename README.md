@@ -1,22 +1,10 @@
-Dbc Teacher
+DBC Teacher
 ================
-
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
-
-This application was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
-provided by the [RailsApps Project](http://railsapps.github.io/).
-
-Rails Composer is supported by developers who purchase our RailsApps tutorials.
 
 Problems? Issues?
 -----------
 
-Need help? Ask on Stack Overflow with the tag 'railsapps.'
-
-Your application contains diagnostics in the README file. Please provide a copy of the README file when reporting any issues.
-
-If the application doesn't work as expected, please [report an issue](https://github.com/RailsApps/rails_apps_composer/issues)
-and include the diagnostics.
+Contact Mihai: mihai.banulescu@devbootcamp.com
 
 Ruby on Rails
 -------------
@@ -26,10 +14,43 @@ This application requires:
 - Ruby 2.0.0
 - Rails 4.2.6
 
-Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).
-
 Getting Started
 ---------------
+Create an application.yml in config/ with
+```
+OMNIAUTH_PROVIDER_KEY: d25ee7c7f1655bf98b39
+OMNIAUTH_PROVIDER_SECRET: ba7f4bbfa4f55b657eb63ff590f6e5dca06c3808
+```
+
+Create a database.yml file in config/ with:
+```
+development:
+  adapter:  postgresql
+  host:     localhost
+  encoding: unicode
+  database: dbc-teacher_development
+  pool:     5
+  username: [YOURS]
+  password: [YOURS]
+  template: template0
+
+test:
+  adapter:  postgresql
+  host:     localhost
+  encoding: unicode
+  database: dbc-teacher_test
+  pool:     5
+  username: [YOURS]
+  password: [YOURS]
+  template: template0
+```
+
+To run all specs:
+```rspec spec/```
+
+To start the server, while watching for changes:
+```guard```
+
 
 Documentation and Support
 -------------------------
@@ -42,6 +63,13 @@ Similar Projects
 
 Contributing
 ------------
+
+Ask to be added as a collaborator, then make the changes you want to see.
+Keep master green.
+
+Suggestions:
+* get a code review from a peer
+* write some specs for your code
 
 Credits
 -------

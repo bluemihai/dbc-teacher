@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
   scope :teachers, -> {where(role: 1)}
   scope :students, -> {where(role: 0)}
 
+  def self.teachers
+    User.all.select{ |user| ['teacher', 'admin'].include? user.role }
+  end
+
   def set_default_role
     if User.count == 0
       self.role ||= :admin

@@ -6,4 +6,4 @@
   = User.students.pluck(:name).join(', ')
 %p
   Teachers
-  = User.teachers.pluck(:name).join(', ')
+  = User.teachers.map{|u|u.name}.join(', ')

@@ -15,6 +15,7 @@ describe User do
       @teacher1 = FactoryGirl.create(:user, role: 'teacher')
       @teacher2 = FactoryGirl.create(:user, role: 'teacher')
       @teacher3 = FactoryGirl.create(:user, role: 'teacher')      
+      @admin = FactoryGirl.create(:user, :admin)
       @student1 = FactoryGirl.create(:user, role: 'student')
     end
 
@@ -22,8 +23,8 @@ describe User do
       expect(User.students.count).to eq(2)
     end
 
-    it '#self.teachers should return all teachers' do
-      expect(User.teachers.count).to eq(3)
+    it '#self.teachers should return all teachers and admins' do
+      expect(User.teachers.count).to eq(4)
     end    
   end
 
