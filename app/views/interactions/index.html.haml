@@ -1,0 +1,40 @@
+- if @mine 
+  %h1
+    My Interactions
+    = link_to '(All)', interactions_path
+- else
+  %h1
+    All Interactions
+    = link_to '(Mine)', interactions_path(mine: true)
+
+%table
+  %thead
+    %tr
+      %th Student
+      %th Teacher
+      %th Minutes
+      %th Topic
+      %th Challenge
+      %th Rating
+      %th Learned
+      %th
+      %th
+      %th
+
+  %tbody
+    - @interactions.each do |interaction|
+      %tr
+        %td= interaction.student_id
+        %td= interaction.teacher_id
+        %td= interaction.minutes
+        %td= interaction.topic
+        %td= interaction.challenge_id
+        %td= interaction.rating
+        %td= interaction.learned
+        %td= link_to 'Show', interaction
+        %td= link_to 'Edit', edit_interaction_path(interaction)
+        %td= link_to 'Destroy', interaction, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Interaction', new_interaction_path

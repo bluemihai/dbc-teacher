@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Student:
+  = @interaction.student_id
+%p
+  %b Teacher:
+  = @interaction.teacher_id
+%p
+  %b Minutes:
+  = @interaction.minutes
+%p
+  %b Topic:
+  = @interaction.topic
+%p
+  %b Challenge:
+  = @interaction.challenge_id
+%p
+  %b Rating:
+  = @interaction.rating
+%p
+  %b Learned:
+  = @interaction.learned
+
+= link_to 'Edit', edit_interaction_path(@interaction)
+\|
+= link_to 'Back', interactions_path

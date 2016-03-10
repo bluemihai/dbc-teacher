@@ -1,0 +1,13 @@
+%h3= @user.name
+
+%p= image_tag(@user.avatar_url, height: 100, width: 100, alt: "avatar", title: "See your profile")
+
+%p
+  - if @user.email
+    %strong Email:
+    = @user.email
+    %br
+  - if @user.role
+    %strong Role:
+    = @user.role
+    %br
