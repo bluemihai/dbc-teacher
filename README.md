@@ -45,11 +45,16 @@ test:
   template: template0
 ```
 
+and then create and seed the db with
+```
+bundle exec rake db:setup
+```
+
 To run all specs:
-```rspec spec/```
+```bundle exec rspec spec/```
 
 To start the server, while watching for changes:
-```guard```
+```bundle exec guard```
 
 
 Documentation and Support
@@ -60,19 +65,27 @@ Issues
 
 Similar Projects
 ----------------
+Socrates
+Athena
+Backoffice
 
 Contributing
 ------------
 
 Ask to be added as a collaborator, then make the changes you want to see.
-Keep master green.
 
-Suggestions:
+Do:
 * get a code review from a peer
 * write some specs for your code
 
+Don't
+* break stuff
+* merge failing specs into master.
+
 Credits
 -------
+Mihai
 
 License
 -------
+I don't know how we do things but this is probably DBC property?

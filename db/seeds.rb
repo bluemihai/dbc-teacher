@@ -7,3 +7,11 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # Environment variables (ENV['...']) can be set in the file config/application.yml.
 # See http://railsapps.github.io/rails-environment-variables.html
+
+User.create!(name: 'Tommy', role: 'teacher')
+User.create!(name: 'Tamara', role: 'teacher')
+User.create!(name: 'Tiger', role: 'teacher')
+User.create!(name: 'Samwise', role: 'student')
+User.create!(name: 'Sunshine', role: 'student')
+User.create!(name: 'Sergio', role: 'student')
+

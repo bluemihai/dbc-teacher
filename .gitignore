@@ -21,9 +21,6 @@ db/*.sqlite3
 /log/*
 /tmp/*
 
-# add /config/database.yml if it contains passwords
-# /config/database.yml
-
 # various artifacts
 **.war
 *.rbc
@@ -82,9 +79,7 @@ pickle-email-*.html
 
 # tilde files are usually backup files from a text editor
 *~
-<<<<<<< HEAD
 
 # Ignore application configuration
 /config/application.yml
-=======
->>>>>>> 3a6ef61ef53a5594e1b184aa5a4adc0d01ef6fa8
+/config/database.yml
