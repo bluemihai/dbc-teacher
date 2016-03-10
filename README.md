@@ -18,8 +18,9 @@ Getting Started
 ---------------
 Create an application.yml in config/ with
 ```
-OMNIAUTH_PROVIDER_KEY: d25ee7c7f1655bf98b39
-OMNIAUTH_PROVIDER_SECRET: ba7f4bbfa4f55b657eb63ff590f6e5dca06c3808
+development:
+  OMNIAUTH_PROVIDER_KEY: c945589819bf701ff77e
+  OMNIAUTH_PROVIDER_SECRET: 83a2442db6bba7a2382fbfcd87470e2bdac4546b
 ```
 
 Create a database.yml file in config/ with:

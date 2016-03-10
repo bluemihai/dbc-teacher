@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :cohorts
+  resources :locations
   resources :interactions
   resources :users
   root to: 'visitors#index'

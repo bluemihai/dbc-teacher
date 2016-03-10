@@ -1,0 +1,15 @@
+= simple_form_for(@location) do |f|
+  = f.error_notification
+
+  .form-inputs
+    .large-4.columns= f.input :city, autofocus: true
+    .large-2.columns= f.input :abbrev
+    .large-6.columns
+    .line-break
+    .large-2.columns= f.input :status, collection: Location.statuses.keys.map {|status| [status.titleize, status]}
+    .large-4.columns= f.input :starting, include_blank: true, :wrapper_html => { :class => "date" }, label: 'Open as of'
+    .large-6.columns
+    .line-break
+
+  .form-actions
+    = f.button :submit

@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
   end
 
   def email
-    'joe@example.com'
+    github_hash['email'] if github_hash
   end
 
 end

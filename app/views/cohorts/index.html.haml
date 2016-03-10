@@ -1,0 +1,27 @@
+%h1 Listing cohorts
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Github name
+      %th Phase 1 start
+      %th Location
+      %th
+      %th
+      %th
+
+  %tbody
+    - @cohorts.each do |cohort|
+      %tr
+        %td= cohort.name
+        %td= cohort.github_name
+        %td= cohort.phase_1_start
+        %td= cohort.location_id
+        %td= link_to 'Show', cohort
+        %td= link_to 'Edit', edit_cohort_path(cohort)
+        %td= link_to 'Destroy', cohort, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Cohort', new_cohort_path

@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b City:
+  = @location.city
+%p
+  %b Abbrev:
+  = @location.abbrev
+%p
+  %b Status:
+  = @location.status
+
+= link_to 'Edit', edit_location_path(@location)
+\|
+= link_to 'Back', locations_path
