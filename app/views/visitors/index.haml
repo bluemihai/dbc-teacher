@@ -4,14 +4,23 @@
   %strong= pluralize(Cohort.count, 'Cohort')
   .line-break
   = render Cohort.all
-- if students = User.students
-  .large-2.medium-4.small-6.columns.heading
+.large-2.medium-4.small-6.columns.heading
+  - if students = User.students
     %strong= pluralize(students.count, 'Student')
     .line-break
     = render students.order(:name)
-- if teachers = User.all_teachers
-  .large-2.medium-4.small-6.columns.heading
+.large-2.medium-4.small-6.columns.heading
+  - if teachers = User.teachers
     %strong= pluralize(teachers.count, 'Teacher')
     .line-break
     = render teachers.order(:name)
-.large-6.show-for-large-up.columns.heading
+.large-2.medium-4.small-6.columns.heading
+  - if admins = User.admins
+    %strong= pluralize(admins.count, 'Admin')
+    .line-break
+    = render admins.order(:name)
+.large-2.medium-4.small-6.columns.heading
+  - if all_teachers = User.all_teachers
+    %strong= pluralize(all_teachers.count, 'All Teacher')
+    .line-break
+    = render all_teachers.sort_by(&:name)

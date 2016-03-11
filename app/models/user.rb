@@ -8,10 +8,10 @@ class User < ActiveRecord::Base
 
   scope :teachers, -> {where(role: 1)}
   scope :students, -> {where(role: 0)}
-  scope :admin, -> {where(role: 3)}
+  scope :admins, -> {where(role: 3)}
 
   def self.all_teachers
-    User.teachers.merge(User.admin)
+    User.teachers + User.admins
   end
 
   def set_default_role
@@ -33,13 +33,14 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.create_from_github(username)
+  def self.create_from_github(username, role='student')
     user_api = JSON.parse eat('https://api.github.com/users/' + username)
     create! do |user|
       user.provider = 'github'
       user.uid = user_api['id']
       user.github_hash = user_api
       user.name = user_api['name']
+      user.role = role
     end
   end
 
