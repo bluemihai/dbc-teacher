@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 describe User do
 
   before(:each) { @user = FactoryGirl.create(:user, name: 'Default Student', role: 'student') }

@@ -1,9 +1,11 @@
 = link_to user.name, user
+\—
+= link_to("Delete", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete)
 %br
 /.large-2.columns= link_to user.name, user
 / .large-4.columns
 /   = form_for(user) do |f|
 /     .large-6.columns= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]})
 /     .large-6.columns= f.submit 'Change Role', :class => 'button-xs'
-/ .large-2.columns= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete)
+/ .large-2.columns
 / %hr
