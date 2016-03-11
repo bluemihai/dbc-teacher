@@ -36,7 +36,7 @@
     github_hashes ||= members_from_github
     github_hashes.each do |h|
       u = User.create_from_github(h['login'])
-      p u
+      u.update(cohort_id: self.id)
       sleep 5
     end
     return self

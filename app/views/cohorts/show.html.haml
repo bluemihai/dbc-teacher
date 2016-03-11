@@ -12,7 +12,7 @@
   = link_to @cohort.auto_github_name, @cohort.github_team_url, target: 'external'
 %p
   %b Members:
-  = @cohort.members_from_github
+  = render @cohort.members
 
 = link_to 'Edit', edit_cohort_path(@cohort)
 \|

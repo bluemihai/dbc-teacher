@@ -1,1 +1,4 @@
-= link_to cohort.name, cohort
+= link_to "#{cohort.name} (#{cohort.members.count})", cohort
+\—
+%td= link_to 'Destroy', cohort, :method => :delete, :data => { :confirm => 'Are you sure?' }
+%br
