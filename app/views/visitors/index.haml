@@ -1,20 +1,20 @@
 %h3 Welcome to DBC Teacher!
 
-.large-2.medium-4.small-6.columns.heading
+.large-3.medium-6.small-12.columns
   %strong= pluralize(Cohort.count, 'Cohort')
   .line-break
   = render Cohort.all
-.large-2.medium-4.small-6.columns.heading
+.large-3.medium-6.small-12.columns
   - if students = User.students
     %strong= pluralize(students.count, 'Student')
     .line-break
     = render students.order(:name)
-.large-2.medium-4.small-6.columns.heading
-  - if teachers = User.teachers
-    %strong= pluralize(teachers.count, 'Teacher')
+.large-3.medium-6.small-12.columns
+  - if all_teachers = User.all_teachers
+    %strong= pluralize(all_teachers.count, 'Teacher')
     .line-break
-    = render teachers.order(:name)
-.large-2.medium-4.small-6.columns.heading
+    = render all_teachers.sort_by(&:name)
+.large-3.medium-6.small-12.columns
   - if admins = User.admins
     %strong= pluralize(admins.count, 'Admin')
     .line-break
