@@ -1,12 +1,8 @@
-= link_to(image_tag(user.avatar_url, alt: "avatar", width: 20, height: 20), user)
-= link_to user.name, user
-\—
-= link_to("Delete", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete)
+.large-2.columns= link_to(image_tag(user.avatar_url, alt: "avatar", width: 40, height: 40), user)
+.large-2.columns= link_to user.name, user
+.large-1.columns= link_to("X", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete)
+.large-7.columns
+  = form_for(user) do |f|
+    .large-6.columns= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]})
+    .large-6.columns= f.submit 'Go', :class => 'button-xs'
 %br
-/.large-2.columns= link_to user.name, user
-/ .large-4.columns
-/   = form_for(user) do |f|
-/     .large-6.columns= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]})
-/     .large-6.columns= f.submit 'Change Role', :class => 'button-xs'
-/ .large-2.columns
-/ %hr

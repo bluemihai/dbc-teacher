@@ -23,5 +23,3 @@
 #   end
 #
 # end
-
-puts "x is #{x}"

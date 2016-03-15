@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.2'
+ruby '2.2.3'
 
 gem 'rails', '4.2.6'
 gem 'sass-rails', '~> 5.0'
@@ -31,7 +31,7 @@ end
 group :development do
   gem 'spring'                # Spring speeds up development by keeping your application running in the background
   gem 'better_errors'
-  gem 'binding_of_caller', :platforms=>[:mri_20]
+  gem 'binding_of_caller'
   gem 'guard-bundler'
   gem 'guard-rails'
   gem 'guard-rspec'

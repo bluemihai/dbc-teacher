@@ -1,22 +1,6 @@
 %h3 Welcome to DBC Teacher!
 
-.large-3.medium-6.small-12.columns
-  %strong= pluralize(Cohort.count, 'Cohort')
-  .line-break
-  = render Cohort.all
-.large-3.medium-6.small-12.columns
-  - if students = User.students
-    %strong= pluralize(students.count, 'Student')
-    .line-break
-    = render students.order(:name)
-.large-3.medium-6.small-12.columns
-  - if all_teachers = User.all_teachers
-    %strong= pluralize(all_teachers.count, 'Teacher')
-    .line-break
-    = render all_teachers.sort_by(&:name)
-.large-3.medium-6.small-12.columns
-  - if admins = User.admins
-    %strong= pluralize(admins.count, 'Admin')
-    .line-break
-    = render admins.order(:name)
-.line-break
+- if current_user
+  Hello...
+- else
+  Click the "Sign in" link above, and let the awesomeness begin.

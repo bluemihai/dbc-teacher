@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  enum role: [:student, :teacher, :mentor, :admin]
+  enum role: [:student, :teacher, :mentor, :admin, :staff]
 
   after_initialize :set_default_role, :if => :new_record?
   has_many :teacher_interactions, foreign_key: :student_id

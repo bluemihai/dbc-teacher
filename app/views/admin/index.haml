@@ -1,0 +1,23 @@
+%h2 Admin Dashboard
+
+%p
+  = pluralize(Cohort.count, 'Cohort')
+  = render Cohort.all
+  
+  .clear-both
+.large-4.medium-6.small-12.columns
+  - if students = User.students
+    %strong= pluralize(students.count, 'Student')
+    .line-break
+    = render students.order(:name)
+.large-4.medium-6.small-12.columns
+  - if all_teachers = User.all_teachers
+    %strong= pluralize(all_teachers.count, 'Teacher')
+    .line-break
+    = render all_teachers.sort_by(&:name)
+.large-4.medium-6.small-12.columns
+  - if admins = User.admins
+    %strong= pluralize(admins.count, 'Admin')
+    .line-break
+    = render admins.order(:name)
+.line-break
