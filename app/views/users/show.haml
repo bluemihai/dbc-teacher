@@ -11,3 +11,7 @@
     %strong Role:
     = @user.role
     %br
+  - if @user.github
+    %strong Github:
+    = link_to @user.github, "http://github.com/#{@user.github}"
+    %br

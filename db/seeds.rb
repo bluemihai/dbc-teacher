@@ -8,10 +8,27 @@
 # Environment variables (ENV['...']) can be set in the file config/application.yml.
 # See http://railsapps.github.io/rails-environment-variables.html
 
-User.create!(name: 'Tommy', role: 'teacher')
-User.create!(name: 'Tamara', role: 'teacher')
-User.create!(name: 'Tiger', role: 'teacher')
-User.create!(name: 'Samwise', role: 'student')
-User.create!(name: 'Sunshine', role: 'student')
-User.create!(name: 'Sergio', role: 'student')
+locations = [['San Francisco', 'sf'], ['Chicago', 'chi'], ['New York', 'nyc']]
+locations.each do |names|
+  Location.create!(city: names[0], abbrev: names[1], status: 'active')
+end
 
+sf = Location.find_by(abbrev: 'sf')
+raise "Could not find sf" if sf.nil?
+
+sf_teachers = ['amgando', 'bluemihai', 'booneteam', 'bootcoder', 'dreeve', 'jkarnowski', 'salogel42', 'ssachid', 'sebabelmar']
+sf_teachers.each do |github|
+  teacher = User.create_from_github(github, sf, 'admin')
+  puts "Added teacher #{teacher.name} (#{teacher.github_login})"
+end
+
+sf_mentors = ['benvogcodes', 'bfaloona', 'jbomotti', 'neurodynamic', 'twymer']
+sf_mentors.each do |github|
+  mentor = User.create_from_github(github, sf, 'mentor')
+  puts "Added mentor #{mentor.name} (#{mentor.github_login})"
+end
+
+cohorts = {1 => 'sf-sea-lions-2016', 2 => 'sf-fiddler-crabs-2016', 3 => 'sf-squirrels-2016'}
+cohorts.each do |phase, github|
+  Cohort.create_and_populate(github, phase)
+end

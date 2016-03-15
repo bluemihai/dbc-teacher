@@ -1,4 +1,4 @@
 class Interaction < ActiveRecord::Base
-  belongs_to :teacher, class_name: 'User'
-  belongs_to :student, class_name: 'User'
+  belongs_to :teacher, class_name: 'User', required: true
+  belongs_to :student, class_name: 'User', required: true
 end

@@ -16,8 +16,13 @@
     .line-break
     = render all_teachers.sort_by(&:name)
 .large-4.medium-6.small-12.columns
-  - if admins = User.admins
-    %strong= pluralize(admins.count, 'Admin')
+  - if mentors = User.mentors
+    %strong= pluralize(mentors.count, 'Mentor')
     .line-break
-    = render admins.order(:name)
+    = render mentors.order(:name)
+/ .large-4.medium-6.small-12.columns
+/   - if admins = User.admins
+/     %strong= pluralize(admins.count, 'Admin')
+/     .line-break
+/     = render admins.order(:name)
 .line-break

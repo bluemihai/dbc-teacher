@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def current_location
+      @current_location ||= Location.find_by_or_create(abbrev: 'sf', city: 'San Francisco', status: 'active')
+    end
+
     def user_signed_in?
       return true if current_user
     end

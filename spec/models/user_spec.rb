@@ -2,7 +2,10 @@ require 'rails_helper'
 
 describe User do
 
-  before(:each) { @user = FactoryGirl.create(:user, name: 'Default Student', role: 'student') }
+  before(:each) do
+    @sf = FactoryGirl.create(:location, abbrev: 'sf')
+    @user = FactoryGirl.create(:user, name: 'Default Student', location: @sf, role: 'student')
+  end
 
   subject { @user }
 
@@ -13,7 +16,7 @@ describe User do
   end
 
   it "User#import_from_github works" do
-    @garrett = User.create_from_github('booneteam', 'teacher')
+    @garrett = User.create_from_github('booneteam', @sf, 'teacher')
     expect(@garrett.name).to match 'Garrett Boone'
     expect(@garrett.role).to match 'teacher'
   end
