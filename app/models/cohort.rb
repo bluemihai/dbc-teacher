@@ -36,9 +36,10 @@
     github_hashes ||= members_from_github
     github_hashes.each do |h|
       u = User.create_from_github(h['login'], location)
-      u.update(cohort: self)
-      # sleep 5
-      pp u
+      if u
+        puts "Created student #{u.name} (github #{u.github_login}, cohort #{u.cohort.try(:github_name)})"
+        u.update(cohort: self)
+      end
     end
     return self
   end

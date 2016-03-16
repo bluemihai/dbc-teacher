@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   scope :admins, -> {where(role: 3).order(:name)}
   scope :staff, -> {where(role: 4).order(:name)}
 
+  # validates :github_login, presence: true
+
   def self.all_teachers
     User.teachers + User.admins
   end
@@ -29,7 +31,6 @@ class User < ActiveRecord::Base
     create! do |user|
       user.provider = auth['provider']
       user.uid = auth['uid']
-      user.github_login = auth['login']
       user.github_hash = auth['extra']['raw_info'] if auth['extra']
       if auth['info']
          user.name = auth['info']['name'] || ""
@@ -41,7 +42,7 @@ class User < ActiveRecord::Base
     existing = User.find_by_github_if_existing(username)
     if existing
       puts "Skipping and returning #{username} — already exists."
-      return existing
+      return false
     end
     raise "Location is nil" if location.nil?
     user_api = JSON.parse eat("https://api.github.com/users/#{username}?client_id=#{ENV['OMNIAUTH_PROVIDER_KEY']}&client_secret=#{ENV['OMNIAUTH_PROVIDER_SECRET']}")
@@ -49,7 +50,8 @@ class User < ActiveRecord::Base
       user.provider = 'github'
       user.uid = user_api['id']
       user.github_hash = user_api
-      user.name = user_api['name']
+      user.github_login = user_api['login']
+      user.name = user_api['name'] || 'Name Me Later'
       user.role = role
       user.location = location
     end

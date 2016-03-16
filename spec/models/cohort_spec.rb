@@ -20,7 +20,6 @@ RSpec.describe Cohort, type: :model do
       {'login' => 'amblount'},
       {'login' => 'andriayr'},
     ]
-    pp Location.all
     puts "Location.find_by(abbrev: 'la') is #{Location.find_by(abbrev: 'la')}"
 
     c = Cohort.create_and_populate('la-grass-hoppers-2016', 5, 2016, 2, 29, hashes)

@@ -11,14 +11,23 @@ describe User do
 
   it { should respond_to(:name) }
 
-  it "#name returns a string" do
-    expect(@user.name).to match 'Default Student'
-  end
+  context "user creation" do
+    it "#name returns a string" do
+      expect(@user.name).to match 'Default Student'
+    end
 
-  it "User#import_from_github works" do
-    @garrett = User.create_from_github('booneteam', @sf, 'teacher')
-    expect(@garrett.name).to match 'Garrett Boone'
-    expect(@garrett.role).to match 'teacher'
+    it "User#import_from_github works" do
+      @hunter = User.create_from_github('bootcoder', @sf, 'teacher')
+      expect(@hunter.name).to match 'Hunter Chapman'
+      expect(@hunter.role).to match 'teacher'
+    end    
+
+    it "User#import_from_github fails with existing github login" do
+      @hunter = User.create_from_github('bootcoder', @sf, 'teacher')
+      clone = User.create_from_github('bootcoder', @sf, 'student')
+      expect(clone).to eq(false)
+      expect(@hunter.role).to eq('teacher')
+    end
   end
 
   context 'scopes' do
