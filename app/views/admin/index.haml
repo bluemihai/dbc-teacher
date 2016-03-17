@@ -2,6 +2,7 @@
 
 %p
   = pluralize(Cohort.count, 'Cohort')
+  %br
   = render Cohort.all
   
   .clear-both

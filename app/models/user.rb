@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
 
   # validates :github_login, presence: true
 
+  def student_github_cohort
+    "#{name} (#{github_login}, #{cohort.try(:name)})"
+  end
+
   def self.all_teachers
     User.teachers + User.admins
   end
@@ -38,7 +42,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.create_from_github(username, location, role='student')
+  def self.create_from_github(username, location, role='student', cohort=nil)
     existing = User.find_by_github_if_existing(username)
     if existing
       puts "Skipping and returning #{username} — already exists."

@@ -4,7 +4,7 @@
   .form-inputs
     .large-8.columns
       .large-5.columns= f.association :teacher, collection: User.all_teachers, include_blank: true, selected: current_user.try(:id), allow_blank: true
-      .large-5.columns= f.association :student, collection: User.students, autofocus: true
+      .large-5.columns= f.association :student, collection: User.students, autofocus: true, label_method: :student_github_cohort
       .large-2.columns= f.input :minutes, collection: (5..90).to_a.select{ |min| min % 5 == 0 }
       .large-2.columns= f.input :rating, collection: (-3..3)
       .large-5.columns= f.input :topic

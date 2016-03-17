@@ -16,10 +16,11 @@
 
   # returns an array of GitHub info hashes
   def members_from_github
+    "Running members_from_github"
     JSON.parse eat("https://api.github.com/orgs/#{github_name}/members?access_token=" + ENV["GITHUB_PERSONAL_ACCESS_TOKEN"])
   end
 
-  def self.create_and_populate(github_handle, phase, year=2016, month=1, day=1, github_hashes=nil)
+  def self.create_and_populate(github_handle, phase, year=2016, month=1, day=1, github_hashes_mock=nil)
     parts = github_handle.split('-')
     city_abbrev = parts.shift
     loc = Location.find_by(abbrev: city_abbrev)
@@ -29,12 +30,12 @@
     parts.pop  # get rid of the 2016, we're not using it
     name = parts.join(' ').titleize
     c = Cohort.create(github_name: github_handle, location: loc, name: name, current_phase: phase, phase_1_start: Date.new(year, month, day))
-    c.populate(loc, github_hashes)
+    c.populate(loc, github_hashes_mock)
   end
 
-  def populate(location, github_hashes=nil)
-    github_hashes ||= members_from_github
-    github_hashes.each do |h|
+  def populate(location, github_hashes_mock=nil)
+    github_hashes_mock ||= members_from_github
+    github_hashes_mock.each do |h|
       u = User.create_from_github(h['login'], location)
       if u
         puts "Created student #{u.name} (github #{u.github_login}, cohort #{u.cohort.try(:github_name)})"
