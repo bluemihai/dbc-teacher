@@ -38,3 +38,5 @@ cohorts = {1 => 'sf-sea-lions-2016', 2 => 'sf-fiddler-crabs-2016', 3 => 'sf-squi
 cohorts.each do |phase, github|
   Cohort.create_and_populate(github, phase)
 end
+
+Challenge.create!(name: "Example challenge", phase: 2, week: 1, description: "This is some challenge!!")

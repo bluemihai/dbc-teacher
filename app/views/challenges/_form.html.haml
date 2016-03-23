@@ -1,0 +1,12 @@
+= simple_form_for(@challenge) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :phase
+    = f.input :week
+    = f.input :github_repo
+    = f.input :description
+
+  .form-actions
+    = f.button :submit

@@ -16,7 +16,11 @@ class User < ActiveRecord::Base
   # validates :github_login, presence: true
 
   def student_github_cohort
-    "#{name} (#{github_login}, #{cohort.try(:name)})"
+    "#{name} (#{github_login}, #{cohort.try(:current_phase)}-#{cohort.try(:name)})"
+  end
+
+  def student_cohort
+    "#{name} (#{cohort.try(:current_phase)}-#{cohort.try(:name)})"
   end
 
   def self.all_teachers

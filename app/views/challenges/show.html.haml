@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @challenge.name
+%p
+  %b Phase:
+  = @challenge.phase
+%p
+  %b Week:
+  = @challenge.week
+%p
+  %b Github repo:
+  = @challenge.github_repo
+%p
+  %b Description:
+  = @challenge.description
+
+= link_to 'Edit', edit_challenge_path(@challenge)
+\|
+= link_to 'Back', challenges_path

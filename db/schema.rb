@@ -11,11 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160315221927) do
+ActiveRecord::Schema.define(version: 20160323151112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+
+  create_table "challenges", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "phase"
+    t.integer  "week"
+    t.string   "github_repo"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "cohorts", force: :cascade do |t|
     t.string   "name"
