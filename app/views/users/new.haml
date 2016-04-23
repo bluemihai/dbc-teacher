@@ -1,0 +1,13 @@
+%h1 Create User From Github
+
+= simple_form_for(@user) do |f|
+  = f.error_notification
+
+  .form-inputs
+    .large-2.columns= f.input :github_login, autofocus: true
+    .large-2.columns= f.association :cohort, collection: Cohort.active, label_method: :phase_cohort, selected: params[:cohort_id]
+    .large-2.columns= f.input :role, collection: User.roles_humanized
+    .line-break
+
+  .form-actions
+    = f.button :submit

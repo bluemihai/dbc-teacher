@@ -1,4 +1,4 @@
-= link_to "#{cohort.name} (#{cohort.members.count})", cohort
+= link_to "#{cohort.phase > 3? '' : cohort.phase.to_s + '-'}#{cohort.name} (#{cohort.members.count})", cohort
 \—
 %td.action= link_to 'Delete', cohort, :method => :delete, :data => { :confirm => 'Are you sure?' }
 %br

@@ -1,18 +1,14 @@
-%p
-  %b Name:
-  = @cohort.name
-%p
-  %b Phase 1 start:
-  = @cohort.phase_1_start
-%p
-  %b Location:
-  = @cohort.location_id
-%p
-  %b Github:
-  = link_to @cohort.auto_github_name, @cohort.github_team_url, target: 'external'
-%p
-  %b Members:
-  = render @cohort.members
+%h2
+  = link_to "#{@cohort.location.abbrev.upcase} #{@cohort.name}", @cohort.github_team_url
+  \—
+  = "Phase #{@cohort.phase}"
+
+.line-break
+%h4
+  = "#{@cohort.members.count} Members"
+  \—
+  = link_to "Add", new_user_path(cohort_id: @cohort.id)
+= render @cohort.members.sort_by{ |user| user.github_login.downcase}
 
 = link_to 'Edit', edit_cohort_path(@cohort)
 \|

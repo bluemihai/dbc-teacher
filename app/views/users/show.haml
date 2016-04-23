@@ -7,6 +7,10 @@
     %strong Email:
     = @user.email
     %br
+  - if @user.cohort
+    %strong Cohort:
+    = link_to @user.cohort.name, @user.cohort
+    %br
   - if @user.role
     %strong Role:
     = @user.role

@@ -18,25 +18,23 @@ raise "Could not find sf" if sf.nil?
 
 sf_teachers = ['aespaldi', 'amgando', 'bluemihai', 'booneteam', 'b0uma', 'bootcoder', 'dreeve', 'jkarnowski', 'salogel42', 'ssachid', 'sebabelmar']
 sf_teachers.each do |github|
-  teacher = User.create_from_github(github, sf, 'admin')
+  teacher = User.create_from_github(github, 'admin')
   puts "Added teacher #{teacher.name} (#{teacher.github_login})"
 end
 
 sf_mentors = ['benvogcodes', 'bfaloona', 'jbomotti', 'neurodynamic', 'twymer']
 sf_mentors.each do |github|
-  mentor = User.create_from_github(github, sf, 'mentor')
+  mentor = User.create_from_github(github, 'mentor')
   puts "Added mentor #{mentor.name} (#{mentor.github_login})"
 end
 
 sf_staff = ['lferrari2', 'CatMingHubbard']
 sf_staff.each do |github|
-  staff = User.create_from_github(github, sf, 'staff')
+  staff = User.create_from_github(github, 'staff')
   puts "Added staff member #{staff.name} (#{staff.github_login})"
 end
 
 cohorts = {1 => 'sf-sea-lions-2016', 2 => 'sf-fiddler-crabs-2016', 3 => 'sf-squirrels-2016'}
-cohorts.each do |phase, github|
-  Cohort.create_and_populate(github, phase)
-end
+cohorts.each { |phase, github| Cohort.create_and_populate(github, phase) }
 
 Challenge.create!(name: "Example challenge", phase: 2, week: 1, description: "This is some challenge!!")

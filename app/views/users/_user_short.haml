@@ -1,0 +1,6 @@
+= link_to(image_tag(user.avatar_url, alt: "avatar", width: 40, height: 40), user)
+= link_to user.name, user
+\—
+= link_to "E", edit_user_path(user)
+= link_to("X", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete)
+%br

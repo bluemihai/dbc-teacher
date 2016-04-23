@@ -17,14 +17,14 @@ describe User do
     end
 
     it "User#import_from_github works" do
-      @hunter = User.create_from_github('bootcoder', @sf, 'teacher')
+      @hunter = User.create_from_github('bootcoder', 'teacher')
       expect(@hunter.name).to match 'Hunter Chapman'
       expect(@hunter.role).to match 'teacher'
     end    
 
     it "User#import_from_github fails with existing github login" do
-      @hunter = User.create_from_github('bootcoder', @sf, 'teacher')
-      clone = User.create_from_github('bootcoder', @sf, 'student')
+      @hunter = User.create_from_github('bootcoder', 'teacher')
+      clone = User.create_from_github('bootcoder', 'student')
       expect(clone).to eq(false)
       expect(@hunter.role).to eq('teacher')
     end

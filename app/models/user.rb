@@ -15,12 +15,16 @@ class User < ActiveRecord::Base
 
   # validates :github_login, presence: true
 
+  def self.roles_humanized
+    User.roles.keys.map {|role| [role.titleize,role]}
+  end
+
   def student_github_cohort
     "#{name} (#{github_login}, #{cohort.try(:current_phase)}-#{cohort.try(:name)})"
   end
 
   def student_cohort
-    "#{name} (#{cohort.try(:current_phase)}-#{cohort.try(:name)})"
+    "#{name} (#{cohort.try(:phase)}-#{cohort.try(:name)})"
   end
 
   def self.all_teachers
@@ -46,14 +50,15 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.create_from_github(username, location, role='student', cohort=nil)
+  def self.create_from_github(username, role='student', cohort=nil)
+    raise 'no username!' unless username
     existing = User.find_by_github_if_existing(username)
     if existing
       puts "Skipping and returning #{username} — already exists."
-      return false
+      return existing, flash[:notice] = 'Already exists.'
     end
-    raise "Location is nil" if location.nil?
-    user_api = JSON.parse eat("https://api.github.com/users/#{username}?client_id=#{ENV['OMNIAUTH_PROVIDER_KEY']}&client_secret=#{ENV['OMNIAUTH_PROVIDER_SECRET']}")
+    github_api_url = "https://api.github.com/users/#{username}?access_token=#{ENV['GITHUB_PERSONAL_ACCESS_TOKEN']}"
+    user_api = JSON.parse eat(github_api_url)
     create! do |user|
       user.provider = 'github'
       user.uid = user_api['id']
@@ -61,7 +66,7 @@ class User < ActiveRecord::Base
       user.github_login = user_api['login']
       user.name = user_api['name'] || 'Name Me Later'
       user.role = role
-      user.location = location
+      user.cohort_id = cohort.try(:id)
     end
   end
 

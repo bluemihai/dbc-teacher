@@ -10,6 +10,10 @@ RSpec.describe Cohort, type: :model do
   subject { @cohort }
 
   it { should respond_to(:name) }
+
+  it '#phase should work' do
+    
+  end
   
   it "Cohort#create_and_populate should work" do
     expect(Cohort.count).to eq(1)

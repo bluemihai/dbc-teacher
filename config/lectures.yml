@@ -1,0 +1,32 @@
+phase_1:
+  week_1:
+    mon: "Intro to Phase 1"
+    tue: "Testing"
+phase_2:
+  week_4:
+    mon: "Intro to Phase 2, HTTP, Sinatra"
+    tue: "Sinatra"
+    wed: "CRUD, REST, AR"
+    thu: "Users, bcrypt"
+    fri: "Group Project: Lil Twitter"
+  week_5:
+    mon: "Javascript"
+    tue: "jQuery"
+    wed: "AJAX"
+    thu: "Checkpoint challenge, Group Project: DBC Overflow"
+    fri: "Group Project: DBC Overflow"
+phase_3:
+  week_7:
+    mon: "Intro to Phase 3/Rails"
+    tue: "Rails controllers, routing, feature testing"
+    wed: "Responsive CSS, asset pipeline"
+    thu: "Javascript in Rails, Action Mailer"
+    fri: "Breakouts"
+  week_8:
+    mon: "Closures, IIFEs, promises"
+    tue: "Rails API/Decoupled application"
+    wed: "Assessment, assessment review, practice pitches"
+    thu: "Final project pitches/selections"
+  week_9:
+    thu: "Presentation Tips"
+    fri: "Demos/graduation"
