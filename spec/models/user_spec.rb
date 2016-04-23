@@ -11,22 +11,22 @@ describe User do
     )
   end
 
-  subject { @user }
-
-  it { should respond_to(
-    :name,
-    :provider,
-    :uid,
-    :role,
-    :github_hash,
-    :cohort,
-    :github_login,
-    :teacher_interactions,
-    :student_interactions,
-    :phase_lead_requests
-  )}
-
   context "user creation" do
+    it "should responds to attributes and associations" do
+      expect(@user).to respond_to(
+        :name,
+        :provider,
+        :uid,
+        :role,
+        :github_hash,
+        :cohort,
+        :github_login,
+        :teacher_interactions,
+        :student_interactions,
+        :phase_lead_requests
+      )
+    end
+
     it "#name returns a string" do
       expect(@user.name).to match 'Default Student'
     end
@@ -47,7 +47,7 @@ describe User do
     end
   end
 
-  context 'scopes' do
+  context 'scopes work' do
     before do
       @teacher1 = FactoryGirl.create(:user, name: 'Teacher 1', role: 'teacher')
       @teacher2 = FactoryGirl.create(:user, name: 'Teacher 2', role: 'teacher')

@@ -3,8 +3,8 @@
 
   .form-inputs
     = f.input :day
-    = f.input :teacher_id
-    = f.input :phase_day_id
+    = f.association :teacher
+    = f.association :phase_day
     = f.input :approved_by_coordinator
 
   .form-actions
