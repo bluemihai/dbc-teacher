@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :student_interactions, foreign_key: :teacher_id
   belongs_to :cohort
   belongs_to :location#, required: true   TODO: is this desirable? cause it sure breaks the specs
+  has_many :phase_lead_requests, foreign_key: :teacher_id
 
   scope :students, -> {where(role: 0).order(:name)}
   scope :teachers, -> {where(role: 1).order(:name)}
@@ -55,7 +56,7 @@ class User < ActiveRecord::Base
     existing = User.find_by_github_if_existing(username)
     if existing
       puts "Skipping and returning #{username} — already exists."
-      return existing, flash[:notice] = 'Already exists.'
+      return existing #TODO: add above puts as flash notice for users
     end
     github_api_url = "https://api.github.com/users/#{username}?access_token=#{ENV['GITHUB_PERSONAL_ACCESS_TOKEN']}"
     user_api = JSON.parse eat(github_api_url)

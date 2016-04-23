@@ -1,0 +1,27 @@
+%h1 Listing phase_days
+
+%table
+  %thead
+    %tr
+      %th Title
+      %th Phase no
+      %th Day no
+      %th Lead required
+      %th
+      %th
+      %th
+
+  %tbody
+    - @phase_days.each do |phase_day|
+      %tr
+        %td= phase_day.title
+        %td= phase_day.phase_no
+        %td= phase_day.day_no
+        %td= phase_day.lead_required
+        %td= link_to 'Show', phase_day
+        %td= link_to 'Edit', edit_phase_day_path(phase_day)
+        %td= link_to 'Destroy', phase_day, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Phase day', new_phase_day_path

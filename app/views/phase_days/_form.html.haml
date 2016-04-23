@@ -1,0 +1,11 @@
+= simple_form_for(@phase_day) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title
+    = f.input :phase_no
+    = f.input :day_no
+    = f.input :lead_required
+
+  .form-actions
+    = f.button :submit

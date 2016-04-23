@@ -1,0 +1,11 @@
+= simple_form_for(@phase_lead_request) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :day
+    = f.input :teacher_id
+    = f.input :phase_day_id
+    = f.input :approved_by_coordinator
+
+  .form-actions
+    = f.button :submit

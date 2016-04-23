@@ -4,12 +4,27 @@ describe User do
 
   before(:each) do
     @sf = FactoryGirl.create(:location, abbrev: 'sf')
-    @user = FactoryGirl.create(:user, name: 'Default Student', location: @sf, role: 'student')
+    @user = FactoryGirl.create(:user,
+      name: 'Default Student',
+      location: @sf,
+      role: 'student'
+    )
   end
 
   subject { @user }
 
-  it { should respond_to(:name) }
+  it { should respond_to(
+    :name,
+    :provider,
+    :uid,
+    :role,
+    :github_hash,
+    :cohort,
+    :github_login,
+    :teacher_interactions,
+    :student_interactions,
+    :phase_lead_requests
+  )}
 
   context "user creation" do
     it "#name returns a string" do
@@ -24,8 +39,10 @@ describe User do
 
     it "User#import_from_github fails with existing github login" do
       @hunter = User.create_from_github('bootcoder', 'teacher')
+      expect(User.count).to eq 2
       clone = User.create_from_github('bootcoder', 'student')
-      expect(clone).to eq(false)
+      expect(clone).to eq(@hunter)
+      expect(User.count).to eq 2
       expect(@hunter.role).to eq('teacher')
     end
   end

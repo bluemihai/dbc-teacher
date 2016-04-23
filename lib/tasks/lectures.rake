@@ -1,13 +1,8 @@
 require 'yaml'
 
-namespace :lectures do
+namespace :phase_days do
   desc "Load phasely lectures"
   task :load do
-    puts "Rails root is: #{Rails.root}"
-    filename = "#{Rails.root}/config/lectures.yml"
-    puts "filename is #{filename}"
-    lectures = open(filename, 'r').read
-    puts "lectures is #{lectures}"
-    puts YAML.load(lectures)
+    PhaseDay.load_from_yaml
   end
 end

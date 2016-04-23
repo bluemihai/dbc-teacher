@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :phase_lead_requests
+  resources :phase_days
   resources :challenges
   resources :cohorts
   resources :locations

@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Day:
+  = @phase_lead_request.day
+%p
+  %b Teacher:
+  = @phase_lead_request.teacher_id
+%p
+  %b Phase day:
+  = @phase_lead_request.phase_day_id
+%p
+  %b Approved by coordinator:
+  = @phase_lead_request.approved_by_coordinator
+
+= link_to 'Edit', edit_phase_lead_request_path(@phase_lead_request)
+\|
+= link_to 'Back', phase_lead_requests_path

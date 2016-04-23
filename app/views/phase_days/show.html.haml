@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @phase_day.title
+%p
+  %b Phase no:
+  = @phase_day.phase_no
+%p
+  %b Day no:
+  = @phase_day.day_no
+%p
+  %b Lead required:
+  = @phase_day.lead_required
+
+= link_to 'Edit', edit_phase_day_path(@phase_day)
+\|
+= link_to 'Back', phase_days_path

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160323151112) do
+ActiveRecord::Schema.define(version: 20160423141954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,24 @@ ActiveRecord::Schema.define(version: 20160323151112) do
     t.date     "starting"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "phase_days", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "phase_no"
+    t.integer  "day_no"
+    t.boolean  "lead_required", default: true
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  create_table "phase_lead_requests", force: :cascade do |t|
+    t.date     "day"
+    t.integer  "teacher_id"
+    t.integer  "phase_day_id"
+    t.boolean  "approved_by_coordinator"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "users", force: :cascade do |t|
