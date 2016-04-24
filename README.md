@@ -1,13 +1,29 @@
-DBC Teacher
-================
+DBC-TEACHER
+===========
 
-Problems? Issues?
------------
-Create an Issue here
+About
+-----
+See [About Page](http://dbc-teacher.herokuapp.com/about)
+
+Issues
+------
+Bug report or feature request?  Please submit an issue here in Github.
 
 Documentation and Support
 -------------------------
 Read [/docs/README.md](./docs/README.md)
+
+Contributing
+------------
+Ask to be added as a collaborator, then make the changes you want to see.
+
+DO
+* get a code review from a peer
+* write some specs for your code
+
+Do NOT
+* break stuff
+* merge failing specs into master.
 
 Similar Projects
 ----------------
@@ -15,23 +31,15 @@ Similar Projects
 * Athena
 * Backoffice
 
-Contributing
-------------
-
-Ask to be added as a collaborator, then make the changes you want to see.
-
-Do:
-* get a code review from a peer
-* write some specs for your code
-
-Don't
-* break stuff
-* merge failing specs into master.
-
 Credits
 -------
-Mihai
+Contributors: bluemihai, ...
 
 License
 -------
-I don't know how we do things but this is probably DBC property?
+[MIT License](https://en.wikipedia.org/wiki/MIT_License)
+
+Rails Apps Composer
+-------------------
+This application was initially scaffolded with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
+provided by the [RailsApps Project](http://railsapps.github.io/).  Thank you!
