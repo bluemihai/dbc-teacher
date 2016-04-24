@@ -15,6 +15,6 @@ Rails.application.routes.draw do
   get '/signout' => 'sessions#destroy', :as => :signout
   get '/auth/failure' => 'sessions#failure'
   get '/admin' => 'admin#index'
-  get '/lead_for_the_day' => 'phase_lead_requests#index'
+  get '/lead_for_the_day' => 'phase_days#index'
   # get '*paths' => 'visitors#index'
 end

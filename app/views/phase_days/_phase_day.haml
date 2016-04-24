@@ -1,2 +1,12 @@
-= link_to phase_day.title, edit_phase_day_path(phase_day)
+- requests = phase_day.phase_lead_requests
+- if requests.length == 0
+  - path = '#'
+- elsif requests.length == 1
+  - path = requests.first
+- else
+  - path = phase_lead_requests_path(phase_day_id: phase_day.id)
+= link_to "#{requests.count}", path
+\—
+- path = new_phase_lead_request_path(phase_day_id: phase_day.id)
+= link_to phase_day.title, path
 %br

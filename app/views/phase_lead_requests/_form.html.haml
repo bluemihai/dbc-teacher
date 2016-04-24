@@ -2,10 +2,11 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :day
-    = f.association :teacher
-    = f.association :phase_day
-    = f.input :approved_by_coordinator
+    .large-3.medium-6.small-12.columns= f.input :day, collection: @phase_lead_request.try(:phase_day).try(:potential_dates)
+    .large-3.medium-6.small-12.columns= f.association :teacher, collection: User.all_teachers
+    .large-3.medium-6.small-12.columns= f.association :phase_day
+    .large-3.medium-6.small-12.columns= f.input :approved_by_coordinator
 
+  .line-break
   .form-actions
-    = f.button :submit
+    = f.button :submit, 'Go!'

@@ -23,6 +23,10 @@ class PhaseDay < ActiveRecord::Base
     weekdays[day_no % 5]
   end
 
+  def potential_dates
+    (0..360).step(21).map { |x| Date.new(2016, 1, 18) + x.days }
+  end
+
   def self.load_from_yaml
     phases = YAML.load(YAML_FILE.read)
     phases.each do |phase, days|

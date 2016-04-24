@@ -58,13 +58,8 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:location_id, :email, :role, :cohort_id, :github_login, :name)
-      # TODO: determine security needs and whether this is needed.  If not, rename secure_params to params
-      # if @user == current_user
-      #   params.require(:user).permit(:email)
-      # elsif current_user.admin?
-      #   params.require(:user).permit(:role)
-      # end
+      params.require(:user).permit(
+        :location_id, :email, :role, :cohort_id, :github_login, :name, :short)
     end
 
 end

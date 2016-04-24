@@ -2,10 +2,11 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :title
-    = f.input :phase_no
-    = f.input :day_no
-    = f.input :lead_required
+    .large-3.medium-3.columns= f.input :title
+    .large-1.medium-1.columns= f.input :phase_no
+    .large-1.medium-1.columns= f.input :day_no
+    .large-1.medium-1.columns= f.input :lead_required
+    .large-6.medium-6.columns
 
   .form-actions
     = f.button :submit

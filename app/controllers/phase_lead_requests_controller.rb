@@ -1,34 +1,29 @@
 class PhaseLeadRequestsController < ApplicationController
   before_action :set_phase_lead_request, only: [:show, :edit, :update, :destroy]
 
-  # GET /phase_lead_requests
-  # GET /phase_lead_requests.json
   def index
     @phase_lead_requests = PhaseLeadRequest.all
   end
 
-  # GET /phase_lead_requests/1
-  # GET /phase_lead_requests/1.json
   def show
   end
 
-  # GET /phase_lead_requests/new
   def new
-    @phase_lead_request = PhaseLeadRequest.new
+    @phase_lead_request = PhaseLeadRequest.new(
+      teacher_id: current_user.id,
+      phase_day_id: params[:phase_day_id]
+    )
   end
 
-  # GET /phase_lead_requests/1/edit
   def edit
   end
 
-  # POST /phase_lead_requests
-  # POST /phase_lead_requests.json
   def create
     @phase_lead_request = PhaseLeadRequest.new(phase_lead_request_params)
 
     respond_to do |format|
       if @phase_lead_request.save
-        format.html { redirect_to @phase_lead_request, notice: 'Phase lead request was successfully created.' }
+        format.html { redirect_to safe_back(phase_days_path), notice: 'Phase lead request was successfully created.' }
         format.json { render :show, status: :created, location: @phase_lead_request }
       else
         format.html { render :new }
@@ -37,8 +32,6 @@ class PhaseLeadRequestsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /phase_lead_requests/1
-  # PATCH/PUT /phase_lead_requests/1.json
   def update
     respond_to do |format|
       if @phase_lead_request.update(phase_lead_request_params)
@@ -51,8 +44,6 @@ class PhaseLeadRequestsController < ApplicationController
     end
   end
 
-  # DELETE /phase_lead_requests/1
-  # DELETE /phase_lead_requests/1.json
   def destroy
     @phase_lead_request.destroy
     respond_to do |format|
@@ -62,12 +53,10 @@ class PhaseLeadRequestsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_phase_lead_request
       @phase_lead_request = PhaseLeadRequest.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def phase_lead_request_params
       params.require(:phase_lead_request).permit(:day, :teacher_id, :phase_day_id, :approved_by_coordinator)
     end

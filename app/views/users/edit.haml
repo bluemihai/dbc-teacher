@@ -4,8 +4,10 @@
   = f.error_notification
 
   .form-inputs
-    .large-2.columns= f.association :cohort, collection: Cohort.active, label_method: :phase_cohort, autofocus: true
-    .large-4.columns= f.input :name
+    - options = {collection: Cohort.all, label_method: :phase_cohort}
+    .large-2.columns= f.association :cohort, options
+    .large-2.columns= f.input :name
+    .large-2.columns= f.input :short, autofocus: true
     .large-2.columns= f.input :role, collection: User.roles_humanized
     .large-2.columns= f.input :github_login
     .line-break

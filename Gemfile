@@ -26,6 +26,7 @@ group :development, :test do
   gem 'pry-rescue'
   gem 'rspec-rails'
   gem 'rubocop'
+  gem 'haml_lint'
 end
 
 group :development do

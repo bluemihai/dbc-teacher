@@ -15,8 +15,8 @@
     - @phase_lead_requests.each do |phase_lead_request|
       %tr
         %td= phase_lead_request.day
-        %td= phase_lead_request.teacher_id
-        %td= phase_lead_request.phase_day_id
+        %td= phase_lead_request.teacher.try(:name)
+        %td= phase_lead_request.phase_day.try(:name)
         %td= phase_lead_request.approved_by_coordinator
         %td= link_to 'Show', phase_lead_request
         %td= link_to 'Edit', edit_phase_lead_request_path(phase_lead_request)
