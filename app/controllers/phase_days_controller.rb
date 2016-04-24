@@ -2,7 +2,6 @@ class PhaseDaysController < ApplicationController
   before_action :set_phase_day, only: [:show, :edit, :update, :destroy]
 
   def index
-    @phase_days = PhaseDay.all
     @phase_1_days = PhaseDay.ph(1)
     @phase_2_days = PhaseDay.ph(2)
     @phase_3_days = PhaseDay.ph(3)

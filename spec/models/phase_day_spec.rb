@@ -9,8 +9,11 @@ RSpec.describe PhaseDay, type: :model do
   end
 
   it '#potential_dates should work' do
-    puts "@phase_day is #{@phase_day.inspect}"
-    expect(@phase_day.potential_dates).to include Date.new(2016, 4, 11)
+    expect(PhaseDay::POTENTIAL_DATES).to include Date.new(2016, 4, 11)
+  end
+
+  it 'PhaseDay#load_from_yaml should work' do
+    expect(PhaseDay.load_from_yaml.keys).to eq ['phase_1', 'phase_2', 'phase_3']
   end
 
 end

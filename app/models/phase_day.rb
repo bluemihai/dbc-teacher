@@ -1,10 +1,13 @@
-require 'yaml'
+require 'psych'
 
 class PhaseDay < ActiveRecord::Base
   YAML_FILE = File.open("#{Rails.root}/db/seeds/phase_days.yml", 'r')
+  YAML_FILE_NAME = "#{Rails.root}/db/seeds/phase_days.yml"
+  POTENTIAL_STARTS = (0..160).step(21).map{ |x| Date.new(2016, 1, 18) + x.days }
+
   has_many :phase_lead_requests
 
-  scope :ph, ->(id) { where(phase_no: id) }
+  scope :ph, ->(id) { where(phase_no: id).order(:day_no) }
 
   def name
     phase_week_weekday_title
@@ -23,16 +26,17 @@ class PhaseDay < ActiveRecord::Base
     weekdays[day_no % 5]
   end
 
-  def potential_dates
-    (0..360).step(21).map { |x| Date.new(2016, 1, 18) + x.days }
+  def self.next_starting_monday
+    POTENTIAL_STARTS.select{ |mon| mon > Date.today }.first
   end
 
   def self.load_from_yaml
-    phases = YAML.load(YAML_FILE.read)
+    phases = Psych.load_file(YAML_FILE_NAME)
+    raise 'Trouble loading YAML' if phases == false
     phases.each do |phase, days|
-      puts "phase is #{phase}"
+      # puts "phase is #{phase}"
       days.each do |day, title|
-        "days is #{day}, title is #{title}"
+        # puts "days is #{day}, title is #{title}"
         PhaseDay.create!(
           phase_no: phase.chars[-1].to_i,
           day_no: day,

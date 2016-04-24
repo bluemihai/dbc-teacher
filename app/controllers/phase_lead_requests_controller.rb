@@ -2,7 +2,20 @@ class PhaseLeadRequestsController < ApplicationController
   before_action :set_phase_lead_request, only: [:show, :edit, :update, :destroy]
 
   def index
-    @phase_lead_requests = PhaseLeadRequest.all
+    @mon = params[:mon]
+    if params[:mon] == 'all'
+      @requests = PhaseDay::POTENTIAL_STARTS.map do |mon|
+        PhaseLeadRequest.data_for_mon(@mon)
+      end.flatten
+      #TODO troubleshot and complete
+    else
+      if params[:mon]
+        @mon = Date.iso8601(params[:mon])
+      else
+        @mon = PhaseDay.next_starting_monday
+      end
+      @requests = PhaseLeadRequest.data_for_mon(@mon)
+    end
   end
 
   def show

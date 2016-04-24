@@ -1,0 +1,12 @@
+%h5= "Lead Requests for Phase starting #{curr_mon.strftime('%b-%d')}"
+- requests.each do |week, phases|
+  - phases.sort.each do |phase, days|
+    %tr
+      - if phase == 1
+        %td.week{rowspan: 3}= week
+      %td.phase.center{class: "p#{phase}"}= phase
+      - days.each do |day, requests|
+        - requests.each do |request|
+          %td.request{class: "p#{phase}"}
+            = image_tag(request.teacher.avatar_url, height: 32, width: 32)
+            = link_to request.teacher.short, request

@@ -3,12 +3,10 @@ DBC Teacher
 
 Problems? Issues?
 -----------
-
 Contact Mihai: mihai.banulescu@devbootcamp.com
 
 Ruby on Rails
 -------------
-
 This application requires:
 
 - Ruby 2.0.0
@@ -56,7 +54,6 @@ To run all specs:
 
 To start the server, while watching for changes:
 ```bundle exec guard```
-
 
 Documentation and Support
 -------------------------

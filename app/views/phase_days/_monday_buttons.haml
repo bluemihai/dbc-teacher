@@ -1,0 +1,5 @@
+%ul
+  - PhaseDay::POTENTIAL_STARTS.each do |mon|
+    %li.phase-day-box{class: mon == curr_mon ? 'active' : ''}
+      = link_to mon.strftime('%b-%d'), lead_for_the_day_path(mon: mon)
+  .line-break

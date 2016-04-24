@@ -1,3 +1,30 @@
 // Place all the styles related to the phase_lead_requests controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+td.request {
+  padding: 2px;
+  font-size: 80%;
+}
+
+td.week, td.phase {
+  padding: 2px;
+  font-size: 130%;
+  text-align: center;
+}
+
+.p1 {
+  background-color: #ffbbbb;
+}
+
+.p2 {
+  background-color: #bbffbb;
+}
+
+.p3 {
+  background-color: #bbbbff;
+}
+
+li.active {
+  background-color: yellow;
+}

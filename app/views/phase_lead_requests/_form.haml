@@ -1,0 +1,12 @@
+= simple_form_for(@phase_lead_request) do |f|
+  = f.error_notification
+
+  .form-inputs
+    .large-3.medium-6.columns= f.input :day, collection: POTENTIAL_STARTS
+    .large-3.medium-6.columns= f.association :teacher, collection: User.all_teachers
+    .large-3.medium-6.columns= f.association :phase_day
+    .large-3.medium-6.columns= f.input :approved_by_coordinator
+
+  .line-break
+  .form-actions
+    = f.button :submit, 'Go!'
