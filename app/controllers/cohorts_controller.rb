@@ -6,6 +6,7 @@ class CohortsController < ApplicationController
   end
 
   def show
+    raise
   end
 
   def new
