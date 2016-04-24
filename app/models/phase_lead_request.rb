@@ -1,17 +1,3 @@
-# Hat tip to http://bit.ly/23RPez8
-module Enumerable
-  def group_by_recursive(*props)
-    groups = group_by(&props.first)
-    if props.count == 1
-      groups
-    else
-      groups.merge(groups) do |group, elements|
-        elements.group_by_recursive(*props.drop(1))
-      end
-    end
-  end
-end
-
 class PhaseLeadRequest < ActiveRecord::Base
   belongs_to :phase_day
   belongs_to :teacher, class_name: 'User'
@@ -23,7 +9,15 @@ class PhaseLeadRequest < ActiveRecord::Base
   validates_uniqueness_of :phase_day_id, scope: [:teacher_id, :day]
 
   def self.data_for_mon(mon)
-    in_range(mon, mon + 21.days).group_by_recursive(:week, :phase, :day)
+    in_range(mon, mon + 21.days).group_by_recursive(:week, :phase, :day_no)
+  end
+
+  def self.potential_days(day_no)
+    POTENTIAL_STARTS.map{ |d| d + (day_no + 1).days }
+  end
+
+  def day_no
+    phase_day.day_no
   end
 
   def week

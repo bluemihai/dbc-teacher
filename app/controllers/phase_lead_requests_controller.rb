@@ -4,7 +4,7 @@ class PhaseLeadRequestsController < ApplicationController
   def index
     @mon = params[:mon]
     if params[:mon] == 'all'
-      @requests = PhaseDay::POTENTIAL_STARTS.map do |mon|
+      @requests = POTENTIAL_STARTS.map do |mon|
         PhaseLeadRequest.data_for_mon(@mon)
       end.flatten
       #TODO troubleshot and complete
@@ -26,6 +26,9 @@ class PhaseLeadRequestsController < ApplicationController
       teacher_id: current_user.id,
       phase_day_id: params[:phase_day_id]
     )
+    @day = Date.iso8601(params[:day]) 
+    @phase_day = PhaseDay.find_by_id(params[:phase_day_id])
+    @day_options = PhaseLeadRequest.potential_days(@phase_day.day_no)
   end
 
   def edit

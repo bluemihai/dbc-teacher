@@ -18,6 +18,7 @@ gem 'pg'
 gem 'simple_form'
 gem 'thin'
 gem 'eat'
+gem 'awesome_print'
 
 group :development, :test do
   gem 'factory_girl_rails'

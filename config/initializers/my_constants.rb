@@ -1,0 +1,1 @@
+POTENTIAL_STARTS = (0..160).step(21).map{ |x| Date.new(2016, 1, 18) + x.days }

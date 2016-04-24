@@ -1,12 +1,38 @@
 %h5= "Lead Requests for Phase starting #{curr_mon.strftime('%b-%d')}"
-- requests.each do |week, phases|
-  - phases.sort.each do |phase, days|
+- (1..3).each do |week|
+  - (1..3).each do |phase|
     %tr
       - if phase == 1
         %td.week{rowspan: 3}= week
-      %td.phase.center{class: "p#{phase}"}= phase
-      - days.each do |day, requests|
-        - requests.each do |request|
-          %td.request{class: "p#{phase}"}
+      %td.phase{class: "p#{phase}"}= phase
+      - start = (week - 1) * 5
+      - (start+1..start+5).each do |day|
+        - request = requests[week][phase][day].first rescue nil
+        - if request
+          %td.request{class: "p#{phase}"}        
             = image_tag(request.teacher.avatar_url, height: 32, width: 32)
             = link_to request.teacher.short, request
+        - else
+          %td{class: "pd#{phase}"}
+            - phase_day = PhaseDay.find_by(day_no: day, phase_no: phase)
+            - args = {phase_day_id: phase_day.id, day: curr_mon + (day+1).days}
+            = link_to phase_day.try(:title), new_phase_lead_request_path(args)
+
+
+/ %hr
+/ - requests.each do |week, phases|
+/   - phases.sort.each do |phase, days|
+/     %tr
+/       - if phase == 1
+/         %td.week{rowspan: 3}= week
+/       %td.phase.center{class: "p#{phase}"}= phase
+/       - days.each do |day, requests|
+/         - requests.each do |request|
+/           %td.request{class: "p#{phase}"}
+/             = image_tag(request.teacher.avatar_url, height: 32, width: 32)
+/             = link_to request.teacher.short, request
+/
+/
+/     /   - if phase == 1
+/     /     %td.week{rowspan: 3}= week
+/     /   %td.phase.center{class: "p#{phase}"}= phase

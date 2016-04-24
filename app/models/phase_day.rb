@@ -3,7 +3,6 @@ require 'psych'
 class PhaseDay < ActiveRecord::Base
   YAML_FILE = File.open("#{Rails.root}/db/seeds/phase_days.yml", 'r')
   YAML_FILE_NAME = "#{Rails.root}/db/seeds/phase_days.yml"
-  POTENTIAL_STARTS = (0..160).step(21).map{ |x| Date.new(2016, 1, 18) + x.days }
 
   has_many :phase_lead_requests
 
@@ -19,6 +18,10 @@ class PhaseDay < ActiveRecord::Base
 
   def week_no
     (day_no - 1) / 5 + 1
+  end
+
+  def weekday_no
+    day_no % 5
   end
 
   def weekday

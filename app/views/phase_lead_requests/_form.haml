@@ -2,7 +2,7 @@
   = f.error_notification
 
   .form-inputs
-    .large-3.medium-6.columns= f.input :day, collection: POTENTIAL_STARTS
+    .large-3.medium-6.columns= f.input :day, include_blank: true, selected: @day, collection: @day_options
     .large-3.medium-6.columns= f.association :teacher, collection: User.all_teachers
     .large-3.medium-6.columns= f.association :phase_day
     .large-3.medium-6.columns= f.input :approved_by_coordinator
