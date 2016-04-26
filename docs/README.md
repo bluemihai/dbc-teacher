@@ -16,7 +16,10 @@ Contributing Code
 -----------------
 If you use this app and can think of ways to improve it, please do so!
 
-* Pick a story from our [Trello board backlog](https://trello.com/b/fJ4eZEKX/dbc-teacher-app) - ask for write access
+![Trello Board](./dbc-teacher-trello.png)
+
+* Pick a story from our [Trello board backlog](https://trello.com/b/fJ4eZEKX/dbc-teacher-app)
+    * Or, write your own story; ask for write access to Trello board
 * Create a new branch with a descriptive name
 * Don't forget to write specs for it!
 * When done, either
@@ -43,6 +46,3 @@ Setting Up Your Development Environment
 * bin/rails s
   * bundle exec guard
 * bundle exec rspec spec/
-
-Contributing Code
------------------

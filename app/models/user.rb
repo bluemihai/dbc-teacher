@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   belongs_to :cohort
   belongs_to :location#, required: true   TODO: is this desirable? cause it sure breaks the specs
   has_many :phase_lead_requests, foreign_key: :teacher_id
+  belongs_to :advisor, class_name: 'User'
+  has_many :advisees, foreign_key: :advisor_id
 
   scope :students, -> {where(role: 0).order(:name)}
   scope :teachers, -> {where(role: 1).order(:name)}

@@ -1,6 +1,6 @@
-%h1= "Phase Days for #{@mon.strftime('%b-%d')}"
-
 - if @mon
+  %h1= "Phase Days for #{@mon.strftime('%b-%d')}"
+
   %p
     Click the phase day title to make a
     =link_to 'Phase Lead Request', new_phase_lead_request_path
@@ -23,6 +23,7 @@
         - @phase_3_days.in_groups_of(5).each do |five_days|
           %td= render five_days
 - else
+  %h1 Phase Days
   %ul Show phase starting...
   - POTENTIAL_STARTS.each do |mon|
     %li= link_to mon, phase_days_path(mon: mon)

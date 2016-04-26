@@ -91,7 +91,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="351" y="242" name="users">
+<table x="416" y="228" name="users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -123,6 +123,10 @@
 <row name="location_id (???)" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
+<row name="advisor_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="users" row="id" />
+</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
@@ -191,7 +195,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="574" y="476" name="phase_lead_requests">
+<table x="721" y="491" name="phase_lead_requests">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>

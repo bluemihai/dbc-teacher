@@ -9,27 +9,15 @@ Issues
 ------
 Bug report or feature request?  Please submit an issue here in Github.
 
-Documentation and Support
--------------------------
-Read [/docs/README.md](./docs/README.md)
-
-Contributing
-------------
-Ask to be added as a collaborator, then make the changes you want to see.
-
-DO
-* get a code review from a peer
-* write some specs for your code
-
-Do NOT
-* break stuff
-* merge failing specs into master.
+Documentation & Contributing Code
+---------------------------------
+[Read /docs/README.md](./docs/README.md)
 
 Similar Projects
 ----------------
-* Socrates
-* Athena
-* Backoffice
+* [Socrates](https://github.com/kaplan-advance/socrates)
+* [Athena](https://github.com/devbootcamp/athena)
+* [Backoffice](https://github.com/kaplan-advance/backoffice)
 
 Credits
 -------

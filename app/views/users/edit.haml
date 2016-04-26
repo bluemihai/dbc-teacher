@@ -10,6 +10,7 @@
     .large-2.columns= f.input :short, autofocus: true
     .large-2.columns= f.input :role, collection: User.roles_humanized
     .large-2.columns= f.input :github_login
+    .large-2.columns= f.association :advisor, collection: User.teachers
     .line-break
 
   .form-actions

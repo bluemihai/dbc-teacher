@@ -4,7 +4,7 @@ development:
   encoding: unicode
   database: dbc-teacher_development
   pool:     5
-  username: yours
+  username: apprentice
   password: snao09
   template: template0
 
