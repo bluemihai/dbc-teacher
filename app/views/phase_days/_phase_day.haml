@@ -1,12 +1,2 @@
-- requests = phase_day.phase_lead_requests
-- if requests.length == 0
-  = link_to "#{requests.count}", '#'
-- elsif requests.length == 1
-  = link_to "#{requests.first.teacher.short}", requests.first.teacher
-- else
-  - path = phase_lead_requests_path(phase_day_id: phase_day.id)
-  = link_to "#{requests.count}", path
-\—
-- path = new_phase_lead_request_path(phase_day_id: phase_day.id)
-= link_to phase_day.title, path
+= link_to phase_day.title, phase_day
 %br

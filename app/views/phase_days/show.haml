@@ -1,18 +1,10 @@
-%p#notice= notice
+%h2= "Phase #{@phase_day.phase_no}, Week #{@phase_day.week_no}, #{@phase_day.weekday}"
 
-%p
-  %b Title:
-  = @phase_day.title
-%p
-  %b Phase no:
-  = @phase_day.phase_no
-%p
-  %b Day no:
-  = @phase_day.day_no
-%p
-  %b Lead required:
-  = @phase_day.lead_required
+%h4= link_to @phase_day.title, edit_phase_day_path(@phase_day)
 
-= link_to 'Edit', edit_phase_day_path(@phase_day)
-\|
-= link_to 'Back', phase_days_path
+%h4 Past/Future Phase Leads
+
+= render @phase_day.phase_lead_requests
+
+%hr
+= button_to 'All Phase Days', phase_days_path, method: :get

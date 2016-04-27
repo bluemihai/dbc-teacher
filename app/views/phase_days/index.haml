@@ -1,29 +1,12 @@
-- if @mon
-  %h1= "Phase Days for #{@mon.strftime('%b-%d')}"
-
-  %p
-    Click the phase day title to make a
-    =link_to 'Phase Lead Request', new_phase_lead_request_path
-
-  %table
-    %thead
-      %tr
-        %th= "Week 1 (#{@mon.strftime('%b-%d')})"
-        %th= "Week 2 (#{(@mon+7.days).strftime('%b-%d')})"
-        %th= "Week 3 (#{(@mon+14.days).strftime('%b-%d')})"
-
-    %tbody
-      %tr
-        - @phase_1_days.in_groups_of(5).each do |five_days|
-          %td= render five_days
-      %tr
-        - @phase_2_days.in_groups_of(5).each do |five_days|
-          %td= render five_days
-      %tr
-        - @phase_3_days.in_groups_of(5).each do |five_days|
-          %td= render five_days
-- else
-  %h1 Phase Days
-  %ul Show phase starting...
-  - POTENTIAL_STARTS.each do |mon|
-    %li= link_to mon, phase_days_path(mon: mon)
+.large-4.medium-4.small-4.columns
+  %h4 Phase 1 Days
+  - @phase_1_days.in_groups_of(5).each do |week|
+    %p= render week
+.large-4.medium-4.small-4.columns
+  %h4 Phase 2 Days
+  - @phase_2_days.in_groups_of(5).each do |week|
+    %p= render week
+.large-4.medium-4.small-4.columns
+  %h4 Phase 3 Days
+  - @phase_3_days.in_groups_of(5).each do |week|
+    %p= render week
