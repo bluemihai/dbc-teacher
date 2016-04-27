@@ -2,6 +2,8 @@ class PhaseLeadRequest < ActiveRecord::Base
   belongs_to :phase_day
   belongs_to :teacher, class_name: 'User'
 
+  validates :day, presence: true
+
   default_scope { order(:day) }
   scope :by_day, ->(day) { where(day: day) }
   scope :in_range, ->(starting, ending) { where(day: starting..ending)}

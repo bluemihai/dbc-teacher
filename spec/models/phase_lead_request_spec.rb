@@ -17,7 +17,6 @@ RSpec.describe PhaseLeadRequest, type: :model do
       ['Larry'] * 5,
       ['Larry'] * 5
     ]
-
   end
 
   it 'self#data_for_mon works' do
@@ -39,7 +38,7 @@ RSpec.describe PhaseLeadRequest, type: :model do
     expect(PhaseLeadRequest.count).to eq 0
     PhaseLeadRequest.load_phase_leads_from_arrays(args)
     expect(PhaseLeadRequest.count).to eq 45
-    pp PhaseLeadRequest.data_for_mon(@mon411)
+    # pp PhaseLeadRequest.data_for_mon(@mon411)
   end
 end
 

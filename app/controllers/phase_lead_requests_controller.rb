@@ -32,6 +32,7 @@ class PhaseLeadRequestsController < ApplicationController
   end
 
   def edit
+    @day_options = PhaseLeadRequest.potential_days(@phase_lead_request.phase_day.day_no)
   end
 
   def create
@@ -39,7 +40,8 @@ class PhaseLeadRequestsController < ApplicationController
 
     respond_to do |format|
       if @phase_lead_request.save
-        format.html { redirect_to safe_back(phase_days_path), notice: 'Phase lead request was successfully created.' }
+        mon = POTENTIAL_STARTS.select{ |mon| mon <= @phase_lead_request.day }.last
+        format.html { redirect_to phase_lead_requests_path(mon: mon), notice: 'Phase lead request successfully created.' }
         format.json { render :show, status: :created, location: @phase_lead_request }
       else
         format.html { render :new }
@@ -51,7 +53,8 @@ class PhaseLeadRequestsController < ApplicationController
   def update
     respond_to do |format|
       if @phase_lead_request.update(phase_lead_request_params)
-        format.html { redirect_to @phase_lead_request, notice: 'Phase lead request was successfully updated.' }
+        mon = POTENTIAL_STARTS.select{ |mon| mon <= @phase_lead_request.day }.last
+        format.html { redirect_to phase_lead_requests_path(mon: mon), notice: 'Phase lead request was successfully updated.' }
         format.json { render :show, status: :ok, location: @phase_lead_request }
       else
         format.html { render :edit }

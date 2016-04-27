@@ -2,14 +2,5 @@
 = render 'phase_days/monday_buttons', curr_mon: @mon
 
 %table
-  %thead
-    %tr
-      %th Wk
-      %th Ph
-      %th Mon
-      %th Tue
-      %th Wed
-      %th Thu
-      %th Fri
   %tbody
     = render 'tbody', requests: @requests, curr_mon: @mon

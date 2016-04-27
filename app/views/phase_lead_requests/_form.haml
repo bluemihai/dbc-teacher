@@ -2,11 +2,17 @@
   = f.error_notification
 
   .form-inputs
-    .large-3.medium-6.columns= f.input :day, include_blank: true, selected: @day, collection: @day_options
-    .large-3.medium-6.columns= f.association :teacher, collection: User.all_teachers
+    - if @phase_lead_request.day || @day.nil?
+      .large-3.medium-6.columns= f.input :day, include_blank: true, collection: @day_options
+    - else
+      .large-3.medium-6.columns= f.input :day, include_blank: true, selected: @day, collection: @day_options
+    .large-3.medium-6.columns= f.association :teacher, collection: User.all_teachers, autofocus: true
     .large-3.medium-6.columns= f.association :phase_day
     .large-3.medium-6.columns= f.input :approved_by_coordinator
 
   .line-break
   .form-actions
     = f.button :submit, 'Go!'
+- if params[:action] == 'edit'
+  = button_to 'Delete', @phase_lead_request, method: :delete, data: { confirm: 'Are you sure?' }
+
