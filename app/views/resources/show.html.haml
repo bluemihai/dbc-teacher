@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Url:
+  = @resource.url
+%p
+  %b Phase day:
+  = @resource.phase_day_id
+%p
+  %b Source:
+  = @resource.source
+%p
+  %b Last shared:
+  = @resource.last_shared
+%p
+  %b Usefulness rating:
+  = @resource.usefulness_rating
+
+= link_to 'Edit', edit_resource_path(@resource)
+\|
+= link_to 'Back', resources_path

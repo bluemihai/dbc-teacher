@@ -5,11 +5,18 @@ class PhaseDay < ActiveRecord::Base
   YAML_FILE_NAME = "#{Rails.root}/db/seeds/phase_days.yml"
 
   has_many :phase_lead_requests
+  has_many :resources
+  has_many :challenges
 
+  default_scope -> { order(:phase_no).order(:day_no) }
   scope :ph, ->(id) { where(phase_no: id).order(:day_no) }
 
   def name
     phase_week_weekday_title
+  end
+
+  def short
+    "#{phase_no}-#{week_no}-#{weekday}"
   end
 
   def phase_week_weekday_title

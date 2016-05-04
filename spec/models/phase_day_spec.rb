@@ -9,7 +9,7 @@ RSpec.describe PhaseDay, type: :model do
   end
 
   it '#potential_dates should work' do
-    expect(PhaseDay::POTENTIAL_DATES).to include Date.new(2016, 4, 11)
+    expect(POTENTIAL_STARTS).to include Date.new(2016, 4, 11)
   end
 
   it 'PhaseDay#load_from_yaml should work' do

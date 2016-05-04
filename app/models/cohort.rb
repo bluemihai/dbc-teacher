@@ -2,7 +2,7 @@
   belongs_to :location
   has_many :members, class_name: 'User'
 
-  default_scope { order(:phase_1_start).reverse }
+  # default_scope { order(:phase_1_start).reverse }
 
   def self.active
     select{ |c| c.phase < 4 && c.phase > 0}.sort_by(&:phase)

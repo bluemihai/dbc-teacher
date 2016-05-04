@@ -19,3 +19,12 @@
     %strong Github:
     = link_to @user.github, "http://github.com/#{@user.github}"
     %br
+
+%h4 Phase Lead Requests
+
+- data = PhaseLeadRequests.data_grid(@user.phase_lead_requests)
+= render 'phase_lead_requests/calendar', data: @requests_by_role
+
+/ = @requests_by_role.each do |role, requests|
+/   %strong= "#{role} (#{requests.size})"
+/   %br

@@ -4,4 +4,7 @@ class AdminController < ApplicationController
 
   def advisees
   end
+
+  def my_week
+  end
 end

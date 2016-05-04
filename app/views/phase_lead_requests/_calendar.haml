@@ -1,0 +1,7 @@
+// Expecting array of hashes, each ~ one week, key = date, value = requests
+- data.each do |week|
+  .large-2.columns Heading
+  - week.sort.each do |day, requests|
+    .large-2.columns
+      = day.strftime('%b-%d')
+      = requests.count

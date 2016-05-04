@@ -2,9 +2,21 @@
 
 %h4= link_to @phase_day.title, edit_phase_day_path(@phase_day)
 
+%hr
 %h4 Past/Future Phase Leads
-
 = render @phase_day.phase_lead_requests
 
 %hr
-= button_to 'All Phase Days', phase_days_path, method: :get
+%h4
+  = link_to 'Challenges', challenges_path
+  = link_to '(Add)', new_challenge_path(phase_day_id: @phase_day.id)
+= render @phase_day.challenges
+
+%hr
+%h4
+  = link_to 'Resources', resources_path
+  = link_to '(Add)', new_resource_path(phase_day_id: @phase_day.id)
+= render @phase_day.resources.order(:usefulness_rating).reverse
+
+%hr
+= button_to 'PHASE DAYS', phase_days_path, method: :get

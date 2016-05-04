@@ -32,7 +32,8 @@ class PhaseLeadRequestsController < ApplicationController
   end
 
   def edit
-    @day_options = PhaseLeadRequest.potential_days(@phase_lead_request.phase_day.day_no)
+    @day_options = PhaseLeadRequest.potential_days(
+      @phase_lead_request.phase_day.day_no)
   end
 
   def create
@@ -40,12 +41,15 @@ class PhaseLeadRequestsController < ApplicationController
 
     respond_to do |format|
       if @phase_lead_request.save
-        mon = POTENTIAL_STARTS.select{ |mon| mon <= @phase_lead_request.day }.last
-        format.html { redirect_to phase_lead_requests_path(mon: mon), notice: 'Phase lead request successfully created.' }
-        format.json { render :show, status: :created, location: @phase_lead_request }
+        m = POTENTIAL_STARTS.select{ |mon| mon <= @phase_lead_request.day }.last
+        format.html { redirect_to phase_lead_requests_path(mon: m),
+          notice: 'Phase lead request successfully created.' }
+        format.json { render :show, status: :created,
+          location: @phase_lead_request }
       else
         format.html { render :new }
-        format.json { render json: @phase_lead_request.errors, status: :unprocessable_entity }
+        format.json { render json: @phase_lead_request.errors,
+          status: :unprocessable_entity }
       end
     end
   end
@@ -53,12 +57,14 @@ class PhaseLeadRequestsController < ApplicationController
   def update
     respond_to do |format|
       if @phase_lead_request.update(phase_lead_request_params)
-        mon = POTENTIAL_STARTS.select{ |mon| mon <= @phase_lead_request.day }.last
-        format.html { redirect_to phase_lead_requests_path(mon: mon), notice: 'Phase lead request was successfully updated.' }
+        m = POTENTIAL_STARTS.select{ |mon| mon <= @phase_lead_request.day }.last
+        format.html { redirect_to phase_lead_requests_path(mon: m),
+          notice: 'Phase lead request was successfully updated.' }
         format.json { render :show, status: :ok, location: @phase_lead_request }
       else
         format.html { render :edit }
-        format.json { render json: @phase_lead_request.errors, status: :unprocessable_entity }
+        format.json { render json: @phase_lead_request.errors,
+          status: :unprocessable_entity }
       end
     end
   end
@@ -66,7 +72,8 @@ class PhaseLeadRequestsController < ApplicationController
   def destroy
     @phase_lead_request.destroy
     respond_to do |format|
-      format.html { redirect_to phase_lead_requests_url, notice: 'Phase lead request was successfully destroyed.' }
+      format.html { redirect_to phase_lead_requests_url, 
+        notice: 'Phase lead request was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -77,6 +84,7 @@ class PhaseLeadRequestsController < ApplicationController
     end
 
     def phase_lead_request_params
-      params.require(:phase_lead_request).permit(:day, :teacher_id, :phase_day_id, :approved_by_coordinator)
+      params.require(:phase_lead_request).permit(
+        :day, :teacher_id, :phase_day_id, :approved_by_coordinator, :role)
     end
 end

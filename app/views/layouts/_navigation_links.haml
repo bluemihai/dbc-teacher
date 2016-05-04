@@ -1,6 +1,6 @@
 - if current_user
-  %li= link_to 'Interactions', interactions_path
-  %li= link_to '(Add)', new_interaction_path
+  %li= link_to 'Add Interactions', new_interaction_path
+  %li= link_to 'Resources', resources_path
   %li= link_to 'Lead For The Day', lead_for_the_day_path
   / Now redirected to root automatically in visitors_controller#index TODO: consider re-adding?
   / - if current_user.admin?

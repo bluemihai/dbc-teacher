@@ -1,0 +1,5 @@
+- if star_count
+  - size ||= 12
+  .stars
+    - star_count.times do
+      %span.star= image_tag('star.png', width: size, height: size)

@@ -15,6 +15,7 @@ class UsersController < ApplicationController
         redirect_to :back, :alert => "Access denied."
       end
     end
+    @requests_by_role = @user.phase_lead_requests.group_by(&:role)
   end
 
   def new

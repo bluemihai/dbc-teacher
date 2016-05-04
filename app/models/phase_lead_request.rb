@@ -1,8 +1,13 @@
 class PhaseLeadRequest < ActiveRecord::Base
+  FROM = Date.new(2016, 2, 29)
+  UNTIL = Date.new(2016, 5, 22)
+
   belongs_to :phase_day
   belongs_to :teacher, class_name: 'User'
 
   validates :day, presence: true
+
+  enum role: ['Float', 'Lead 1', 'Lead 2', 'Lead 3', 'PDG', 'Off']
 
   default_scope { order(:day) }
   scope :by_day, ->(day) { where(day: day) }
@@ -16,6 +21,19 @@ class PhaseLeadRequest < ActiveRecord::Base
 
   def self.potential_days(day_no)
     POTENTIAL_STARTS.map{ |d| d + (day_no + 1).days }
+  end
+
+  def self.data_grid(requests)
+    calendar = (FROM..UNTIL).to_a.in_groups_of(7)
+    calendar.map do |week|
+      week.delete_at(5)
+      week.delete_at(6)
+      week.each_with_index do |day, idx|
+        week[idx] = [day, requests.select{ |r| r.day == day}]
+      end
+      week.to_h
+    end
+    calendar
   end
 
   def day_no

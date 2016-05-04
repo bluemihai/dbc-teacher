@@ -6,7 +6,6 @@ class CohortsController < ApplicationController
   end
 
   def show
-    raise
   end
 
   def new
@@ -52,7 +51,7 @@ class CohortsController < ApplicationController
 
   private
     def set_cohort
-      @cohort = Cohort.find(params[:id])
+      @cohort = Cohort.find_by(id: params[:id])
     end
 
     def cohort_params

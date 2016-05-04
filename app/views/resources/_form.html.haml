@@ -1,0 +1,21 @@
+= simple_form_for(@resource) do |f|
+  = f.error_notification
+
+  .form-inputs
+    .large-2.medium-2.columns= f.input :kind, collection: Resource.kinds.keys.zip(Resource.kinds.keys)
+    .large-4.medium-4.columns
+      - if @resource.phase_day
+        = f.association :phase_day, include_blank: true
+      - else
+        = f.association :phase_day, selected: params[:phase_day_id], include_blank: true
+    .large-6.medium-6.columns= f.input :name, autofocus: true
+    .large-6.medium-6.columns= f.input :source
+    .large-6.medium-6.columns= f.input :url
+    .large-6.medium-6.columns= f.input :description
+    .large-6.medium-6.columns
+      = f.input :last_shared
+      = f.input :usefulness_rating, collection: (0..5)
+
+  %hr
+  .form-actions
+    = f.button :submit

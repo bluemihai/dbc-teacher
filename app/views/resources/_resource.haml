@@ -1,0 +1,5 @@
+= link_to edit_resource_path(resource) do
+  = render 'layouts/stars', star_count: resource.usefulness_rating
+= link_to resource.name, resource.url
+
+%br

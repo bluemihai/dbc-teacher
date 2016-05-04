@@ -1,0 +1,31 @@
+%h1 Resources
+
+%table
+  %thead
+    %tr
+      %th Kind
+      %th Name/Url
+      %th ph-wk-day
+      %th Source
+      %th Last shared
+      %th Rating
+      %th
+      %th
+      %th
+
+  %tbody
+    - @resources.each do |resource|
+      %tr
+        %td= resource.kind
+        %td= link_to resource.name, resource.url
+        %td= link_to resource.phase_day.try(:short) || 'None Yet', resource.phase_day
+        %td= resource.source
+        %td= resource.last_shared.strftime('%b-%d, %Y')
+        %td= render 'layouts/stars', star_count: resource.usefulness_rating
+        %td= link_to 'Show', resource
+        %td= link_to 'Edit', edit_resource_path(resource)
+        %td= link_to 'Destroy', resource, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Resource', new_resource_path
